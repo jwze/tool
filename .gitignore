@@ -1,0 +1,131 @@
+######################
+# Project Specific
+######################
+/target/classes/static/**
+/src/test/javascript/coverage/
+
+######################
+# Build Tools
+######################
+# Maven
+/log/
+/target/
+
+# Gradle
+.gradle
+/build/
+
+# Maven Wrapper
+!.mvn/wrapper/maven-wrapper.jar
+
+# Gradle Wrapper
+!gradle/wrapper/gradle-wrapper.jar
+
+######################
+# IDEs
+######################
+# Eclipse
+*.pydevproject
+.project
+.metadata
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.classpath
+.settings
+.loadpath
+.factorypath
+/src/main/resources/rebel.xml
+.externalToolBuilders
+*.launch
+.cproject
+.buildpath
+.sts4-cache
+.apt_generated
+.springBeans
+
+# IntelliJ IDEA
+.idea
+*.iml
+*.iws
+*.ipr
+*.ids
+*.orig
+classes/
+out/
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+
+# Visual Studio Code
+.vscode
+
+######################
+# Node.js
+######################
+/node/
+node_tmp/
+node_modules/
+npm-debug.log.*
+/.awcache/
+/.cache-loader/
+
+######################
+# Frontend
+######################
+# SASS
+.sass-cache
+
+######################
+# Operating Systems
+######################
+# Windows
+Thumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+.svn
+._*
+.Spotlight-V100
+.Trashes
+
+######################
+# Miscellaneous
+######################
+# Logs
+*.log*
+
+# Compiled class files
+*.class
+
+# Backup files
+*.*~
+*~
+
+# Merge conflict files
+.merge_file*
+
+# Package files
+*.jar
+*.war
+*.ear
+*.db
+
+# Directories
+/bin/
+/deploy/
+
+# ESLint cache
+.eslintcache
+
+# Other specific files and directories
+HELP.md
