@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <springProperty scope="context" name="appname" source="logback.appname"/>
+    <springProperty scope="context" name="logdir" source="logback.logdir"/>
+
+    <appender name="fileInfoLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${logdir}/${appname}/info.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${logdir}/${appname}/info.%d{yyyy-MM-dd}.log</FileNamePattern>
+            <maxHistory>90</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] [%X{sessionId}] [%X{username}] %-5level %logger{36} %line - %msg %n</pattern>
+        </encoder>
+    </appender>
+
+
+    <appender name="fileErrorLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>Error</level>
+        </filter>
+        <File>${logdir}/${appname}/error.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${logdir}/${appname}/error.%d{yyyy-MM-dd}.log</FileNamePattern>
+            <maxHistory>90</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] [%X{sessionId}] [%X{username}] %-5level %logger{36} %line - %msg %n</pattern>
+        </encoder>
+    </appender>
+
+
+    <appender name="consoleLog" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>
+                <pattern>%d{HH:mm:ss.SSS} [%thread] [%X{sessionId}] [%X{username}] %-5level %logger{36} %line - %.-3000msg %n</pattern>
+            </pattern>
+        </layout>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>debug</level>
+        </filter>
+    </appender>
+
+    <logger name="org.springframework.data.mongodb" level="DEBUG"/>
+
+    <logger name="com.linkyoyo.weatherpredict.service" level="DEBUG"/>
+
+    <root level="INFO">
+        <appender-ref ref="consoleLog"/>
+    </root>
+
+    <springProfile name="!local">
+        <root level="INFO">
+            <appender-ref ref="fileInfoLog"/>
+            <appender-ref ref="fileErrorLog"/>
+        </root>
+    </springProfile>
+
+</configuration>
